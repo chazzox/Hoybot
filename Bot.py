@@ -3,10 +3,6 @@ import asyncio
 
 client = discord.Client()
 
-bot_out = ""
-
-
-
 
 @client.event
 async def on_ready():
@@ -17,6 +13,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    bot_out = ""
     
     print(message.channel)
     
@@ -24,14 +21,10 @@ async def on_message(message):
     messag = str(messag).lower()
 
     print(messag)
+    for i in range (0,50):
+            bot_out  = bot_out + ":raised_hands::skin-tone-4:"
+    await  message.channel.send(bot_out, tts = True)
 
-    if messag.startswith('hb!'):
-        bot_out = str(input("Enter message to send"))
-        await  message.channel.send(bot_out, tts = True)
-
-    elif message.content.startswith('!sleep'):
-        await asyncio.sleep(5)
-        await message.channel.send('Done sleeping')
 
 
 
