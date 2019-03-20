@@ -2,7 +2,7 @@
 The hoyest of discord bots
 
 ## What it written in?
-python, cause c# was a big bad when i wrote it first
+python
 
 ## What is the point?
 Pretty much just messing around with discord
