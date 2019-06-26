@@ -4,6 +4,8 @@ const optReg = /^([1-3])$/
 const readlineSync = require('readline-sync');
 var optn;
 
+var totalBreen= 5
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
   menu()
@@ -16,6 +18,13 @@ client.on('message', msg =>{
     }
     else if (msg.content.toLowerCase() === '!av') {
         msg.reply(msg.author.avatarURL)
+    }
+    else if (msg.content.toLowerCase()== "give me breen"){
+      msg.channel.send('breen', {
+        files: [
+          "./theBreen/"+(Math.floor(Math.random()*(+totalBreen-+1))+1)+".png"
+        ]
+      })
     }
   }
 });
