@@ -1,60 +1,52 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const optReg = /^([1-3])$/
-const readlineSync = require('readline-sync');
-var optn;
+const {botToken} = require('./config.json');
+const disc = require('discord.js');
+const hoyBot = new disc.Client();
+const botPref = "hb!"
+const totalBreen = 5
 
-var totalBreen= 5
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`)
-  menu()
-});
-
-client.on('message', msg =>{
-  if(optn=="2"){
-    if (msg.content === 'ping') {
-      msg.channel.send('lol fuck right off cunt, im busy taking crack ' + msg.author);
+const commands = {
+    "giveGod" : {
+    execute: (msg) => {
+        msg.channel.send('breen', {
+            files: [
+                `./theBreen/${Math.floor(Math.random() * (+totalBreen - +1)) + 1}.png`
+            ]
+        })
+        console.log(`${msg.author.username} just used the breen`)
     }
-    else if (msg.content.toLowerCase() === '!av') {
-        msg.reply(msg.author.avatarURL)
-    }
-    else if (msg.content.toLowerCase()== "give me breen"){
-      msg.channel.send('breen', {
-        files: [
-          "./theBreen/"+(Math.floor(Math.random()*(+totalBreen-+1))+1)+".png"
-        ]
-      })
-    }
-  }
-});
-
-function sendMsg() {
-  idChannel = readlineSync.question('Enter id: ');
-  channelMSG = readlineSync.question('Enter msg: ');
-  client.channels.get(idChannel).send(channelMSG)
-  while (channelMSG!="/stop"){
-    channelMSG = readlineSync.question('Enter msg: ');
-    try {
-      client.channels.get(idChannel).send(channelMSG)
-    } catch (e) {
-      console.log(e);
-  }
-
 }}
 
-function menu(){
-  console.log("1 - send message to server (looping)")
-  console.log("2 - function like normal bot")
-  console.log("3 - cu time")
-  optn = readlineSync.question('Enter optn: ');
-  while(optReg.test(optn)==false){
-    optn = readlineSync.question('Invalid, try again: ')
-  }
-  if(optn=="1"){
-    sendMsg()
-  }
-  else if(optn=="3"){}
-}
+hoyBot.on('ready', () => {
+  console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
+});
 
-client.login('NTI1MDI5NzA0NjAwOTExODgy.XLzEaQ.xGlMAVT31nInlpqHmH_l1grYeoM');
+hoyBot.on('message', msg =>{
+    if(msg.content.startsWith(botPref)){
+        let suffix = msg.content.split(" ")[1]
+        try{
+        commands[suffix].execute(msg)
+        }
+        catch(err){
+            msg.channel.send("command not recognised")
+        }
+    }
+});
+
+hoyBot.on("guildCreate", guild => {
+    let channelID;
+    let channels = guild.channels;
+    channelLoop:
+    for (let c of channels) {
+        let channelType = c[1].type;
+        if (channelType === "text") {
+            channelID = c[0];
+            break channelLoop;
+        }
+    }
+
+    let channel = hoyBot.channels.get(guild.systemChannelID || channelID);
+    channel.send(`sup cunts dont have command list, will soon`);
+});
+
+hoyBot.login(botToken);
