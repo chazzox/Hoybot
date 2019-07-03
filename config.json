@@ -1,4 +1,7 @@
 {
     "botToken":"NTI1MDI5NzA0NjAwOTExODgy.XRsjjw.cGq2MxIX03sHky12o-6MlioKkCM",
-    "botPref":"hb!"
+    "botPref":"hb!",
+    "channelID":{
+        "578627893262024705":"595382596754472970"
+    }
 }
