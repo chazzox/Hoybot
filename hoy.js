@@ -53,11 +53,17 @@ const commands = {
             }
         },
         "description":"provides information about all the bot commands"
+    },
+    "log":{
+        lol:(msg,args)=>{
+            console.log(`${msg.channel.idChannel}`)
+        }
     }
 }
 
 hoyBot.on('ready', () => {
-  console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
+    console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
+    hoyBot.user.setActivity('b̳͓̞̏̏̉ͮ̅͒ͤr͚̼̤̅̈́ͤ̊͐̆̒̕͝ͅe͛̐ͥ̔ͭ̆̚͏̯͎̤̮͍ę͍͕͚͔̻ͭ̀n͖̞͓̠̟̽̄̿̉͆ͥ on all platforms', { type: 'Streaming' })
 });
 
 hoyBot.on('message', msg =>{
@@ -77,8 +83,10 @@ hoyBot.on('message', msg =>{
         console.log(err)
         msg.channel.send(`bot crashed, rebooting`)
     }
+});
+
+hoyBot.on('guildCreate',(newGuild)=>{
+    newGuild.defaultChannel.send("hi lol")
 })
 
-
-
-hoyBot.login(botToken)
+hoyBot.login(botToken);
