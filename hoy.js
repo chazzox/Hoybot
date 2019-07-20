@@ -44,7 +44,7 @@ const commands = {
                 channelText= ""
             }
         },
-        "description":"lists the servers and channels the bot can send to, useful for the send function  syntax hb! list"
+        "description":"lists the servers and channels the bot can send to, useful for the send function syntax hb! list"
     },
     "help":{
         lol:(msg)=>{
@@ -53,11 +53,25 @@ const commands = {
             }
         },
         "description":"provides information about all the bot commands"
+    },
+    "log":{
+        "here":{
+            lol:(msg,args)=>{
+                msg.channel.idChannel
+            }
+        },
+        "log":{
+            lol:(msg,args)=>{
+                console.log("name jeff, this worked i guess")
+            }
+        },
+        "description":"this is a comand that should theoretically only be used once, once used (admin only), it will log in the specified channel. syntax: hb! /here"
     }
 }
 
 hoyBot.on('ready', () => {
-  console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
+    console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
+    hoyBot.user.setActivity('b̳͓̞̏̏̉ͮ̅͒ͤr͚̼̤̅̈́ͤ̊͐̆̒̕͝ͅe͛̐ͥ̔ͭ̆̚͏̯͎̤̮͍ę͍͕͚͔̻ͭ̀n͖̞͓̠̟̽̄̿̉͆ͥ on all platforms', { type: 'Streaming' })
 });
 
 hoyBot.on('message', msg =>{
@@ -66,19 +80,21 @@ hoyBot.on('message', msg =>{
     // this line will split the command sent by user into it's multiple parts, 
     // then trim the entire array of the white space
     const commandOBJ = rawMsg.split(' ').map(s => s.trim())
-    if (!commands[commandOBJ[1]]){
-        msg.channel.send(`${commandOBJ[1]} is not a functin of the bot`)
-        return
-    }
-    try{
-        commands[commandOBJ[1]].lol(msg, commandOBJ.slice(2))
-    }
-    catch (err){
-        console.log(err)
-        msg.channel.send(`bot crashed, rebooting`)
-    }
+    // if (!commands[commandOBJ[1]][commandOBJ[2]] && !commands[commandOBJ[1]]){
+    //     msg.channel.send(`${commandOBJ[1]} is not a functin of the bot`)
+    //     return
+    // }
+    // try{
+        // commands[commandOBJ[1]].lol(msg, commandOBJ.slice(2))
+    // }
+    // catch (err){
+    //     console.log(err)
+    //     msg.channel.send(`bot crashed, rebooting`)
+    // }
+});
+
+hoyBot.on('guildCreate',(newGuild)=>{
+    newGuild.defaultChannel.send("hi lol")
 })
 
-
-
-hoyBot.login(botToken)
+hoyBot.login(botToken);
