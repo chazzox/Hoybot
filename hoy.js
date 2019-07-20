@@ -85,7 +85,7 @@ hoyBot.on('message', msg =>{
     //     return
     // }
     // try{
-    //     commands[commandOBJ[1]].lol(msg, commandOBJ.slice(2))
+        // commands[commandOBJ[1]].lol(msg, commandOBJ.slice(2))
     // }
     // catch (err){
     //     console.log(err)
