@@ -14,3 +14,4 @@ that aught to do the trick
 
 ## Why is the bot Offline?
 I dont have a server idiot
+
