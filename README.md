@@ -2,7 +2,7 @@
 The hoyest of discord bots
 
 ## What it written in?
-js
+node js
 
 ## What is the point?
 Pretty much just messing around with discord

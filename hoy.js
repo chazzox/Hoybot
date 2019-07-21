@@ -70,27 +70,33 @@ const commands = {
 }
 
 hoyBot.on('ready', () => {
+    // this is the botactivity that you can see if you click on the bot when online
     console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
     hoyBot.user.setActivity('b̳͓̞̏̏̉ͮ̅͒ͤr͚̼̤̅̈́ͤ̊͐̆̒̕͝ͅe͛̐ͥ̔ͭ̆̚͏̯͎̤̮͍ę͍͕͚͔̻ͭ̀n͖̞͓̠̟̽̄̿̉͆ͥ on all platforms', { type: 'Streaming' })
 });
 
 hoyBot.on('message', msg =>{
     if(!msg.content.startsWith(botPref)){return;}
-    const rawMsg = msg.content
-    // this line will split the command sent by user into it's multiple parts, 
-    // then trim the entire array of the white space
+    const rawMsg = msg.content;
+    /* this line will split the command sent by user into it's multiple parts,
+    then trim the entire array of the white space */
     const commandOBJ = rawMsg.split(' ').map(s => s.trim())
-    // if (!commands[commandOBJ[1]][commandOBJ[2]] && !commands[commandOBJ[1]]){
-    //     msg.channel.send(`${commandOBJ[1]} is not a functin of the bot`)
-    //     return
-    // }
-    // try{
-        // commands[commandOBJ[1]].lol(msg, commandOBJ.slice(2))
-    // }
-    // catch (err){
-    //     console.log(err)
-    //     msg.channel.send(`bot crashed, rebooting`)
-    // }
+    if (!commands[commandOBJ[1]][commandOBJ[2]] && !commands[commandOBJ[1]]){
+        msg.channel.send(`${commandOBJ[1]} is not a functin of the bot`)
+        return
+    }
+    try{
+        commands[commandOBJ[1]][commandOBJ[2]].lol()
+    }
+    catch(err){
+        console.log("this was probably not a duel segment command, see later logs to check if a serious error has occured")
+    }
+    try{
+        commands[commandOBJ[1]].lol()
+    }
+    catch(err){
+        
+    }
 });
 
 hoyBot.on('guildCreate',(newGuild)=>{
