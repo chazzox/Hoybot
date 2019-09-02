@@ -1,5 +1,6 @@
 const {botPref,botToken,logChannelID} = require('./config.json');
 const disc = require('discord.js');
+const fs = require('fs');
 const hoyBot = new disc.Client();
 const totalBreen = 5
 
