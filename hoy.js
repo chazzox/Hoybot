@@ -77,27 +77,28 @@ hoyBot.on('ready', () => {
 });
 
 hoyBot.on('message', msg =>{
-    if(!msg.content.startsWith(botPref)){return;}
+    if(!msg.content.startsWith(botPref)){
+        msg.channel.send("this bitch ass trying to break the breen.... breen cannot be broken")
+        return;}
     const rawMsg = msg.content;
     /* this line will split the command sent by user into it's multiple parts,
     then trim the entire array of the white space */
-    const commandOBJ = rawMsg.split(' ').map(s => s.trim())
-    if (!commands[commandOBJ[1]][commandOBJ[2]] && !commands[commandOBJ[1]]){
-        msg.channel.send(`${commandOBJ[1]} is not a functin of the bot`)
-        return
+    const commandOBJ = (rawMsg.replace("hb! ", "")).split(' ').map(s => s.trim())
+    if(commandOBJ.length>2){
+        msg.channel.send(`bruh ${commandOBJ} really do be and invalid function`)
     }
-    try{
-        commands[commandOBJ[1]][commandOBJ[2]].lol()
-    }
-    catch(err){
-        console.log("this was probably not a duel segment command, see later logs to check if a serious error has occured")
-    }
-    try{
-        commands[commandOBJ[1]].lol()
-    }
-    catch(err){
+    // try{
+    //     commands[commandOBJ[1]][commandOBJ[2]].lol()
+    // }
+    // catch(err){
+    //     console.log("this was probably not a duel segment command, see later logs to check if a serious error has occured")
+    // }
+    // try{
+    //     commands[commandOBJ[1]].lol()
+    // }
+    // catch(err){
         
-    }
+    // }
 });
 
 hoyBot.on('guildCreate',(newGuild)=>{
