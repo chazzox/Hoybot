@@ -9,7 +9,7 @@ const commands = {
         lol: (msg) => {
             msg.channel.send('breen', {
                 files: [
-                    `./theBreen/${Math.floor(Math.random() * (+totalBreen - +1)) + 1}.png`
+                    `./assets/theBreen/${Math.floor(Math.random() * (+totalBreen - +1)) + 1}.png`
                 ]
             })
             console.log(`${msg.author.username} just used the breen`)
@@ -56,17 +56,11 @@ const commands = {
         "description":"provides information about all the bot commands"
     },
     "log":{
-        "here":{
-            lol:(msg,args)=>{
-                msg.channel.idChannel
-            }
+        lol:(msg)=>{
+            console.log("in the workings")
         },
-        "log":{
-            lol:(msg,args)=>{
-                console.log("name jeff, this worked i guess")
-            }
-        },
-        "description":"this is a comand that should theoretically only be used once, once used (admin only), it will log in the specified channel. syntax: hb! /here"
+        "description": `sends a specified amount of lines of the log file to server. syntax: "hb! log 100"
+        or: "hb! log **". to send all`
     }
 }
 
@@ -77,32 +71,37 @@ hoyBot.on('ready', () => {
 });
 
 hoyBot.on('message', msg =>{
-    if(!msg.content.startsWith(botPref)){
-        msg.channel.send("this bitch ass trying to break the breen.... breen cannot be broken")
-        return;}
+    if(!msg.content.startsWith(botPref)){return;}
     const rawMsg = msg.content;
-    /* this line will split the command sent by user into it's multiple parts,
-    then trim the entire array of the white space */
-    const commandOBJ = (rawMsg.replace("hb! ", "")).split(' ').map(s => s.trim())
-    if(commandOBJ.length>2){
-        msg.channel.send(`bruh ${commandOBJ} really do be and invalid function`)
+    let commandOBJ = rawMsg.split(' ').map(s => s.trim())
+    commandOBJ.shift()
+    const mainCom = commandOBJ[0]
+    if(commandOBJ.length>3){
+        msg.channel.send(`bruh "${rawMsg.replace("hb! ", "")}" really do be and invalid function`)
+        return
     }
-    // try{
-    //     commands[commandOBJ[1]][commandOBJ[2]].lol()
-    // }
-    // catch(err){
-    //     console.log("this was probably not a duel segment command, see later logs to check if a serious error has occured")
-    // }
-    // try{
-    //     commands[commandOBJ[1]].lol()
-    // }
-    // catch(err){
-        
-    // }
+    if (!commands.hasOwnProperty(mainCom)){
+        msg.channel.send(`bruh "${rawMsg.replace("hb! ", "")}" really do be and invalid function`)
+        return 
+    }
+    try{
+        console.log(commandOBJ.length);
+        commands[commandOBJ[0]][commandOBJ[1]].lol(msg)
+    }
+    catch(err){
+        console.log("this was probably not a duel segment command, see later logs to check if a serious error has occured")
+        try{
+            commands[commandOBJ[0]].lol(msg)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
 });
 
 hoyBot.on('guildCreate',(newGuild)=>{
-    newGuild.defaultChannel.send("hi lol")
-})
+    newGuild.defaultChannel.send("reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 
-hoyBot.login(botToken);
+});
+
+hoyBot.login(botToken)
