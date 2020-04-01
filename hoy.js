@@ -67,7 +67,7 @@ const commands = {
 hoyBot.on('ready', () => {
     // this is the botactivity that you can see if you click on the bot when online
     console.log(`eat my ass! ${hoyBot.user.tag} is up!`)
-    hoyBot.user.setActivity('b̳͓̞̏̏̉ͮ̅͒ͤr͚̼̤̅̈́ͤ̊͐̆̒̕͝ͅe͛̐ͥ̔ͭ̆̚͏̯͎̤̮͍ę͍͕͚͔̻ͭ̀n͖̞͓̠̟̽̄̿̉͆ͥ on all platforms', { type: 'Streaming' })
+    hoyBot.user.setActivity('eat my ass, pretty boy', { type: 'Streaming' })
 });
 
 hoyBot.on('message', msg =>{

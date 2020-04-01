@@ -1,4 +1,5 @@
 {
+    "main": "./hoy.js",
     "scripts": {
         "start": "node ./hoy.js"
     },
@@ -6,6 +7,6 @@
         "nodemon": "^1.19.2"
     },
     "dependencies": {
-        "discord.js": "^11.5.1",
+        "discord.js": "^11.5.1"
     }
 }
