@@ -1,12 +1,12 @@
 {
-    "main": "./hoy.js",
-    "scripts": {
-        "start": "node ./hoy.js"
-    },
-    "devDependencies": {
-        "nodemon": "^1.19.2"
-    },
-    "dependencies": {
-        "discord.js": "^11.5.1"
-    }
+	"main": "./main.js",
+	"scripts": {
+		"start": "node ./main.js"
+	},
+	"dependencies": {
+		"discord.js": "^11.5.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	}
 }
